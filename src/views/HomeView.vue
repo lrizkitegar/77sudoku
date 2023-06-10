@@ -1,9 +1,16 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import { onBeforeMount } from 'vue';
+import { useSudokuStore } from '../stores/sudoku';
+
+const sudokuStore = useSudokuStore()
+
+onBeforeMount(() => {
+  sudokuStore.generateSudokuBoard()
+})
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div>{{sudokuStore.playBoard}}</div>
+  <div>{{sudokuStore.completeBoard}}</div>
+  <div>{{sudokuStore.checkBoard}}</div>
 </template>
